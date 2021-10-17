@@ -60,11 +60,30 @@ def check_or_lose():
                     closed_filed.append(filed[n][i - 1])
                     filed[n][i - 1] = o
                     return True
+                elif 0<= n <10 and 0 <= i+3 < 10 and filed[n][i] == 'X' and filed[n][i + 1] == 'X' and filed[n][i + 2] == 'X' and filed[n][i + 3] == 'X' and filed[n][i -1] != o and filed[n][i -1] != x:
+                    closed_filed.append(filed[n][i - 1])
+                    filed[n][i - 1] = o
+                    return True
     for key, element in enumerate(filed):
         for n, el in enumerate(element):
             for i in range(10):
                 k = n + 4
-                if 0 <= k < 10 and 0 <= k-3 < 10 and filed[n][i] == x and filed[k - 3][i] == x and filed[k - 2][i] == x and filed[k - 1][i] == x and filed[k][i] != o and filed[k][i] != x:
+                if 0 <= k < 10 and 0 <= k - 3 < 10 and 0 <= n - 1 < 10 and filed[n][i] == x and filed[k - 3][
+                    i] == x and filed[k - 2][i] == x and filed[k - 1][i] == x and filed[k][i] == o and filed[n - 1][
+                    i] != x:
+                    closed_filed.append(filed[n - 1][i])
+                    filed[n - 1][i] = o
+                    return True
+                elif 0 <= k - 1 < 10 and 0 <= n - 1 < 10 and filed[n][i] == x and filed[k - 3][i] == x and filed[k - 2][i] == x and filed[k - 1][i] == x and filed[n - 1][i]!=o and filed[n - 1][i] != x:
+                    closed_filed.append(filed[n - 1][i])
+                    filed[n - 1][i] = o
+                    return True
+    for key, element in enumerate(filed):
+        for n, el in enumerate(element):
+            for i in range(10):
+                k = n + 4
+                if 0 <= k < 10 and 0 <= k - 3 < 10 and filed[n][i] == x and filed[k - 3][i] == x and filed[k - 2][
+                    i] == x and filed[k - 1][i] == x and filed[k][i] != o and filed[k][i] != x:
                     closed_filed.append(filed[k][i])
                     filed[k][i] = o
                     return True
@@ -72,34 +91,36 @@ def check_or_lose():
         for n, el in enumerate(element):
             for i in range(10):
                 k = n + 4
-                if 0 <= k < 10 and 0 <= k-3 < 10 and 0 <= n-1 < 10 and filed[n][i] == x and filed[k - 3][i] == x and filed[k - 2][i] == x and filed[k - 1][i] == x and filed[k][i] == o and filed[n - 1][i] != x:
-                    closed_filed.append(filed[n - 1][i])
-                    filed[n - 1][i] = o
-                    return True
-    for key, element in enumerate(filed):
-        for n, el in enumerate(element):
-            for i in range(10):
-                k = n + 2
-                l = i-4
-                if 0 <= k < 10 and 0 <= l < 10 and filed[n][i] == x and filed[n + 2][i - 2] == x and filed[n + 1][i - 1] == filed[k - 1][i - 3] == x and filed[k][i - 4] != o and filed[k][i - 4] != x:
+                l = i - 4
+                if 0 <= k < 10 and 0 <= l < 10 and filed[n][i] == x and filed[n + 2][i - 2] == x and filed[n + 1][
+                    i - 1] == filed[k - 1][i - 3] == x and filed[k][i - 4] != o and filed[k][i - 4] != x:
                     closed_filed.append(filed[k][i - 4])
                     filed[k][i - 4] = o
                     return True
     for key, element in enumerate(filed):
         for n, el in enumerate(element):
             for i in range(10):
-                k = n + 2
+                k = n + 4
                 l = i - 4
-                if 0 <= k < 10 and 0 <= l < 10 and filed[n][i] == x and filed[n + 2][i - 2] == x and filed[n + 1][i - 1] == filed[k - 1][i - 3] == x and filed[k][i - 4] == o and filed[n - 1][i + 1] != x:
+                if 0 <= k < 10 and 0 <= l < 10 and filed[n][i] == x and filed[n + 2][i - 2] == x and filed[n + 1][
+                    i - 1] == filed[k - 1][i - 3] == x and filed[k][i - 4] == o and filed[n - 1][i + 1] != x:
                     closed_filed.append(filed[n - 1][i + 1])
                     filed[n - 1][i + 1] = o
                     return True
+                elif 0 <= k-1 < 10 and 0 <= i-3 < 10 and filed[n][i] == x and filed[n + 2][i - 2] == x and filed[n + 1][
+                    i - 1] == filed[k - 1][i - 3] == x and filed[n - 1][i + 1] != x:
+                    closed_filed.append(filed[n - 1][i + 1])
+                    filed[n - 1][i + 1] = o
+                    return True
+
     for key, element in enumerate(filed):
         for n, el in enumerate(element):
             for i in range(10):
                 k = n - 4
                 l = i - 4
-                if 0 <= k < 10 and 0 <= l < 10 and filed[n][i] == x and filed[n - 1][i - 1] == filed[(n - 4) + 1][(i - 4) + 1] == x and filed[n - 2][i - 2] == x and filed[n - 4][i - 4] != o and filed[n - 4][i - 4] != x:
+                if 0 <= k < 10 and 0 <= l < 10 and filed[n][i] == x and filed[n - 1][i - 1] == filed[(n - 4) + 1][
+                    (i - 4) + 1] == x and filed[n - 2][i - 2] == x and filed[n - 4][i - 4] != o and filed[n - 4][
+                    i - 4] != x:
                     closed_filed.append(filed[n - 4][i - 4])
                     filed[n - 4][i - 4] = o
                     return True
@@ -107,9 +128,15 @@ def check_or_lose():
         for n, el in enumerate(element):
             for i in range(10):
                 k = n - 4
-                if 0 <= k < 10 and 0 <= i+1 < 10 and 0 <= i-4 < 10 and 0 <= n+1 < 10 and filed[n][i] == x and filed[n - 1][i - 1] == filed[k + 1][(i - 4) + 1] == x and filed[n - 2][i - 2] == x and filed[k][i - 4] == o and filed[n + 1][i + 1] != x:
+                if 0 <= k < 10 and 0 <= i + 1 < 10 and 0 <= i - 4 < 10 and 0 <= n + 1 < 10 and filed[n][i] == x and \
+                        filed[n - 1][i - 1] == filed[k + 1][(i - 4) + 1] == x and filed[n - 2][i - 2] == x and \
+                        filed[k][i - 4] == o and filed[n + 1][i + 1] != x:
                     closed_filed.append(filed[n + 1][i + 1])
                     filed[n + 1][i + 1] = o
+                    return True
+                elif 0 <= n+4 < 10 and 0 <= i + 4 < 10 and filed[n][i] == filed[n + 1][i + 1] == filed[n+2][i +2] == filed[n + 3][i +3] == x and filed[n+4][i + 4] != x and filed[n+4][i + 4] != o:
+                    closed_filed.append(filed[n+4][i + 4])
+                    filed[n+4][i + 4] = o
                     return True
         return False
 
